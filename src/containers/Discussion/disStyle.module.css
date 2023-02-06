@@ -1,0 +1,28 @@
+@import url("../../assets/cssVar.css");
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background-color: var(--bgColor);
+    padding: 20px;
+    row-gap: 16px;
+}
+
+.container> div {
+    display: flex;
+    gap: 16px;
+}
+
+.container>div:first-child {
+}
+
+.container>div:last-child {
+}
+
+@media (max-width: 998px) {
+    .container> div {
+        flex-direction: column;
+    }
+}

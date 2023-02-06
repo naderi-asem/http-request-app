@@ -1,0 +1,90 @@
+.newCom {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px 10px;
+    width: 100%;
+
+}
+
+.formBox {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+}
+
+.formBox>h2 {
+    color: var(--text-color-1);
+    text-shadow: 0 0 3px var(--border-color);
+    margin-bottom: 10px;
+}
+
+.newComForm {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px 10px;
+}
+
+.newComForm > div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+}
+
+.newComForm>div>label {
+    color: var(--text-color-2);
+    text-shadow: 0 0 3px var(--border-color);
+    align-self: flex-start;
+    margin-bottom: 4px;
+}
+
+.newComForm>div>input, .newComForm>div> textarea {
+    border: none;
+    outline: none;
+    padding: 6px 4px;
+    border-radius: 7px;
+}
+
+.newComForm>div>input {
+    height: 45px;
+}
+
+
+.newComForm>div> textarea {
+    resize: none;
+    font-family: 'Noto Serif', 'El Messiri', serif ;
+}
+
+.newComForm>div>input:focus, 
+.newComForm>div> textarea:focus {
+    box-shadow: 0 0 3px 3px var(--border-color);
+}
+
+.newComForm>div>button {
+    border: none;
+    height: 45px;
+    width: 100%;
+    border-radius: 7px;
+    background-color: var(--text-color-2);
+    font-family: 'Noto Serif', serif, 'El Messiri';
+    font-weight: bold;
+}
+
+.newComForm>div>button:hover {
+    box-shadow: 0 0 3px 3px var(--border-color);
+    font-family: 'El Messiri', 'Noto Serif', serif;
+}
+
+
+@media (max-width: 998px) {
+    .newCom {
+        width: 98%;
+    }
+
+    .formBox {
+        width: 95%;
+    }
+}

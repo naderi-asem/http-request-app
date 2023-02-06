@@ -1,0 +1,60 @@
+/* @import url("../../assets/cssVar.css"); */
+
+.comments {
+    text-align: center;
+    width: 50%;
+    
+}
+
+.comments> h2 {
+    color: var(--text-color-1);
+    text-shadow: 0 0 3px var(--border-color);
+    margin-bottom: 10px;
+}
+
+.cmtBox {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    height: 90vh;
+    overflow-y: scroll;
+}
+
+.cmtBox::-webkit-scrollbar {
+    display: none;
+}
+
+.cmtBox:hover {
+    cursor: grab;
+}
+
+.cmtBox> div {
+    border: 2px solid var(--border-color);
+    padding: 10px;
+    margin-bottom: 6px;
+    /* color: var(--text-color-2); */
+    font-weight: bold;
+    border-radius: 22px;
+    
+}
+
+.cmtBox> div > p {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    color: var(--text-color-2);
+    text-shadow: 0 0 3px var(--border-color);
+}
+
+.cmtBox> div> p> span {
+    color: var(--text-color-1);
+    word-wrap: break-word;
+}
+
+@media (max-width: 998px) {
+    .comments {
+        width: 98%;
+    }
+}

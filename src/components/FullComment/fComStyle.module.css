@@ -1,0 +1,54 @@
+.fullComment {
+    width: 50%;
+    word-wrap: break-word;
+    text-align: center;
+    /* text-align: center;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px; */
+}
+
+.fullComment>h2{
+    color: var(--text-color-1);
+    text-shadow: 0 0 3px var(--border-color);
+    margin-bottom: 10px;
+}
+
+.fComBox {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    height: 90vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.fComBox::-webkit-scrollbar {
+    display: none;
+}
+
+.fComBox>div {
+    width: 90%;
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 0;
+    color: var(--text-color-1);
+}
+
+.fComBox>div span {
+    color: var(--text-color-2);
+    text-shadow: 0 0 3px var(--border-color);
+    margin-right: 8px;
+}
+
+@media (max-width: 998px) {
+    .fullComment {
+        width: 98%;
+    }
+
+    /* .fComBox {
+        justify-content: unset;
+    } */
+}
