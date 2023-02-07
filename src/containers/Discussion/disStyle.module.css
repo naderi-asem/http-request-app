@@ -21,6 +21,44 @@
 .container>div:last-child {
 }
 
+.comments {
+    text-align: center;
+    width: 50%;
+    
+}
+
+.comments> h2 {
+    color: var(--text-color-1);
+    text-shadow: 0 0 3px var(--border-color);
+    margin-bottom: 10px;
+}
+
+.cmtBox {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    height: 90vh;
+    overflow-y: scroll;
+}
+
+.cmtBox::-webkit-scrollbar {
+    display: none;
+}
+
+.cmtBox:hover {
+    cursor: grab;
+}
+
+/* .cmtBox {
+    border: 2px solid var(--border-color);
+    padding: 10px;
+    margin-bottom: 6px;
+    color: var(--text-color-2);
+    font-weight: bold;
+    border-radius: 22px;
+    
+} */
+
 @media (max-width: 998px) {
     .container> div {
         flex-direction: column;

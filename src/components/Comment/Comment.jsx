@@ -1,22 +1,20 @@
 import cmtStyle from '../Comment/cmtStyle.module.css';
 
-const Comment = ({ allData }) => {
+const Comment = ({ comment, onSelected }) => {
+
+    // const selectedComment = (id) => {
+    //     console.log("id in comment: ", id);
+    // }
+
     return (
-        <section className={cmtStyle.comments}>
-            <h2>comments</h2>
-            <section className={cmtStyle.cmtBox}>
-                {allData.map(data =>
-                    <div key={data.id}>
-                        <p>
-                             <span>{data.name}</span>
-                        </p>
-                        <p>
-                            Email: <span>{data.email}</span>
-                        </p>
-                    </div>
-                )}
-            </section>
-        </section>
+            <div className={cmtStyle.cmt} onClick={() => onSelected(comment.id)} >
+                <p>
+                    name: <span>{comment.name}</span>
+                </p>
+                <p>
+                    Email: <span>{comment.email}</span>
+                </p>
+            </div>
     );
 }
 
