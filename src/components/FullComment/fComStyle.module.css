@@ -28,7 +28,20 @@
 
 .fComBox::-webkit-scrollbar {
     display: none;
+    /* width: 16px; */
 }
+
+/* .fComBox::-webkit-scrollbar-track {
+    border-radius: 8px;
+    box-shadow: inset 0 0 6px var(--border-color);
+
+}
+
+.fComBox::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 8px;
+    box-shadow: inset 0 0 4px var(--text-color-1);
+} */
 
 .fComBox>div {
     width: 90%;
@@ -48,7 +61,24 @@
         width: 98%;
     }
 
-    /* .fComBox {
-        justify-content: unset;
-    } */
+    .fComBox {
+        height: 45vh;
+    }
+
+    .fComBox::-webkit-scrollbar {
+        display: unset;
+        width: 16px;
+    }
+    
+    .fComBox::-webkit-scrollbar-track {
+        border-radius: 8px;
+        box-shadow: inset 0 0 6px var(--border-color);
+    
+    }
+    
+    .fComBox::-webkit-scrollbar-thumb {
+        background-color: var(--border-color);
+        border-radius: 8px;
+        box-shadow: inset 0 0 4px var(--text-color-1);
+    }
 }

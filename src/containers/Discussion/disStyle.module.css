@@ -42,7 +42,20 @@
 }
 
 .cmtBox::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
+    width: 16px;
+}
+
+.cmtBox::-webkit-scrollbar-track {
+    border-radius: 8px;
+    box-shadow: inset 0 0 6px var(--border-color);
+
+}
+
+.cmtBox::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 8px;
+    box-shadow: inset 0 0 4px var(--text-color-1);
 }
 
 .cmtBox:hover {
@@ -59,8 +72,23 @@
     
 } */
 
+
 @media (max-width: 998px) {
+
+    .comments {
+        width: 98%;
+    }
     .container> div {
         flex-direction: column;
     }
+
+    .cmtBox {
+        column-gap: 6px;
+        min-height: 260px;
+        height: 45vh;
+    }
+
+    /* .cmtBox::-webkit-scrollbar {
+        display: block;
+    } */
 }

@@ -32,7 +32,6 @@
     border: 2px solid var(--border-color);
     padding: 10px;
     margin-bottom: 6px;
-    /* color: var(--text-color-2); */
     font-weight: bold;
     border-radius: 22px;
     cursor: pointer;
@@ -43,7 +42,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
     word-wrap: break-word;
     color: var(--text-color-2);
     text-shadow: 0 0 3px var(--border-color);
@@ -57,7 +56,14 @@
 
 
 @media (max-width: 998px) {
-    .comments {
-        width: 98%;
+    .cmt {
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        /* width: max-content; */
+    }
+     
+    .cmt > p {
+        /* width: 35vw; */
     }
 }
