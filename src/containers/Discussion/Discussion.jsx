@@ -48,7 +48,7 @@ const Discussion = () => {
                         )}
                     </section>
                 </section>
-                <FullComment userId={id} />
+                <FullComment commentId={id} />
             </div>
             <div>
                 <NewComment />
