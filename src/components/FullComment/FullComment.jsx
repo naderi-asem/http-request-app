@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import fComStyle from '../FullComment/fComStyle.module.css';
 
-const FullComment = ({ commentId }) => {
+const FullComment = ({ commentId, onDelete }) => {
 
     const [comment, setComment] = useState({});
     console.log("user id in full comment", commentId);
@@ -10,7 +10,15 @@ const FullComment = ({ commentId }) => {
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/comments/${commentId}`)
             .then(({ data }) => setComment(data))
+            .catch(error => console.log(error.message9));
     }, [commentId]);
+
+    const deleteHandler = (id) => {
+        axios.delete(`https://jsonplaceholder.typicode.com/comments/${id}`)
+            .then(({ data }) => console.log(data))
+            .catch(error => console.log(error.message9));
+            onDelete(id);
+    }
 
     return (
         <section className={fComStyle.fullComment}>
@@ -35,7 +43,7 @@ const FullComment = ({ commentId }) => {
                         </div>
                     </>
                     : <div><p>Waiting for the user to click on a comment ...</p></div>}
-                <button>delete</button>
+                <button onClick={() => deleteHandler(comment.id)} >delete</button>
             </section>
 
         </section>

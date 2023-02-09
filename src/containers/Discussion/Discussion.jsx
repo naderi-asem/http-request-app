@@ -31,6 +31,17 @@ const Discussion = () => {
     const selectComment = (id) => {
         setID(id);
     }
+
+    const postCommentHandler = (newComment) => {
+        setDbData([...dbData, newComment]);
+    }
+
+    const deleteCommentHandler = (id) => {
+        const filtered = dbData.filter(comment => comment.id !== id);
+        setDbData(filtered)
+        console.log("id-1: ", dbData.find(c=> c.id === id-1));
+        dbData.find(c => c.id === id-1)? selectComment(id-1): selectComment(0);
+    }
     
 
     if (error) return <div>{error}</div>
@@ -48,10 +59,10 @@ const Discussion = () => {
                         )}
                     </section>
                 </section>
-                <FullComment commentId={id} />
+                <FullComment commentId={id} onDelete={deleteCommentHandler} />
             </div>
             <div>
-                <NewComment />
+                <NewComment onPost={postCommentHandler} />
             </div>
         </section>
     );
