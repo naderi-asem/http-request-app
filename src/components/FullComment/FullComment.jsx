@@ -4,20 +4,20 @@ import fComStyle from '../FullComment/fComStyle.module.css';
 
 const FullComment = ({ commentId, onDelete }) => {
 
-    const [comment, setComment] = useState({});
+    const [comment, setComment] = useState({name: "", email: "", body: ""});
     console.log("user id in full comment", commentId);
 
     useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/comments/${commentId}`)
+        axios.get(`http://localhost:3005/comments/${commentId}`)
             .then(({ data }) => setComment(data))
             .catch(error => console.log(error.message9));
     }, [commentId]);
 
     const deleteHandler = (id) => {
-        axios.delete(`https://jsonplaceholder.typicode.com/comments/${id}`)
-            .then(({ data }) => console.log(data))
+        axios.delete(`http://localhost:3005/comments/${id}`)
+            .then(response => axios.get('http://localhost:3005/comments'))
+            .then(({data}) => onDelete(data, id))
             .catch(error => console.log(error.message9));
-            onDelete(id);
     }
 
     return (
@@ -25,7 +25,7 @@ const FullComment = ({ commentId, onDelete }) => {
             <h2>full comment</h2>
 
             <section className={fComStyle.fComBox}>
-                {commentId
+                {commentId && comment.name
                     ? <>
                         <div>
                             <p>
@@ -43,7 +43,7 @@ const FullComment = ({ commentId, onDelete }) => {
                         </div>
                     </>
                     : <div><p>Waiting for the user to click on a comment ...</p></div>}
-                <button onClick={() => deleteHandler(comment.id)} >delete</button>
+                {comment.name && <button onClick={() => deleteHandler(comment.id)} >delete</button>}
             </section>
 
         </section>

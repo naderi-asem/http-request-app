@@ -14,8 +14,9 @@ const NewComment = ({onPost}) => {
         //     body: e.target.body.value,
         //     id: new Date().getMilliseconds()
         // });
-        axios.post("https://jsonplaceholder.typicode.com/comments", {...comment, postId: Math.floor(Math.random() * 1000) + 500 })
-            .then(response => onPost(response.data))
+        axios.post("http://localhost:3005/comments", {...comment, postId: Math.floor(Math.random() * 1000) + 500 })
+            .then(response => axios.get("http://localhost:3005/comments"))
+            .then(({data}) => onPost(data))
             .catch(error => console.log("post comment: ", error));
     }
 

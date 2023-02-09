@@ -15,9 +15,10 @@ const Discussion = () => {
     //get all comments when the component is mounted
     useEffect(() => {
         axios
-            .get("https://jsonplaceholder.typicode.com/comments")
+            .get("http://localhost:3005/comments")
             .then(({ data }) => {
-                setDbData(data.slice(0, 10));
+                setDbData(data);
+                data.length ? setID(data[0].id) : setID(0);
             })
             .catch(err => {
                 console.log(err);
@@ -32,17 +33,18 @@ const Discussion = () => {
         setID(id);
     }
 
-    const postCommentHandler = (newComment) => {
-        setDbData([...dbData, newComment]);
+    const postCommentHandler = (comments) => {
+        setDbData(comments);
     }
 
-    const deleteCommentHandler = (id) => {
-        const filtered = dbData.filter(comment => comment.id !== id);
-        setDbData(filtered)
-        console.log("id-1: ", dbData.find(c=> c.id === id-1));
-        dbData.find(c => c.id === id-1)? selectComment(id-1): selectComment(0);
+    const deleteCommentHandler = (comments, id) => {
+        setDbData(comments);
+        comments.find(c => c.id === id - 1) ? selectComment(id - 1)
+            : comments.length > 0
+                ? selectComment(comments[0].id)
+                : selectComment(0);
     }
-    
+
 
     if (error) return <div>{error}</div>
     return (

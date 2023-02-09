@@ -7,14 +7,14 @@ const Comment = ({ comment, onSelected }) => {
     // }
 
     return (
-            <div className={cmtStyle.cmt} onClick={() => onSelected(comment.id)} >
-                <p>
-                    name: <span>{comment.name}</span>
-                </p>
-                <p>
-                    Email: <span>{comment.email}</span>
-                </p>
-            </div>
+        <div className={cmtStyle.cmt} onClick={() => onSelected(comment.id)} >
+            <p>
+                name: <span>{comment.name}</span>
+            </p>
+            <p>
+                Email: <span>{comment.email}</span>
+            </p>
+        </div>
     );
 }
 
