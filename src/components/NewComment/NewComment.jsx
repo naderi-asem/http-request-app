@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import newCom from '../NewComment/newComStyle.module.css';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const NewComment = ({onPost}) => {
 
@@ -9,19 +10,15 @@ const NewComment = ({onPost}) => {
     const submitHandler = (e) => {
         e.preventDefault();
         // setComment({
-        //     name: e.target.name.value,
-        //     email: e.target.email.value,
-        //     body: e.target.body.value,
-        //     id: new Date().getMilliseconds()
+        //     [e.target.name]: e.target.value,
         // });
-        axios.post("http://localhost:3005/comments", {...comment, postId: Math.floor(Math.random() * 1000) + 500 })
+        axios.post("http://localhost:3005/comments", {...comment, postId: Math.floor(Math.random() * 30)})
             .then(response => axios.get("http://localhost:3005/comments"))
             .then(({data}) => onPost(data))
-            .catch(error => console.log("post comment: ", error));
+            .catch(error => toast.error("An error occurred while adding a comment: \n" + error.message));
     }
 
     const changeHandler = (e) => {
-        console.log(e.target.value);
         setComment({
             ...comment, [e.target.name]: e.target.value
         });

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import fComStyle from '../FullComment/fComStyle.module.css';
+import { toast } from 'react-toastify';
 
 const FullComment = ({ commentId, onDelete }) => {
 
@@ -17,7 +18,7 @@ const FullComment = ({ commentId, onDelete }) => {
         axios.delete(`http://localhost:3005/comments/${id}`)
             .then(response => axios.get('http://localhost:3005/comments'))
             .then(({data}) => onDelete(data, id))
-            .catch(error => console.log(error.message9));
+            .catch(error => toast.error("There was an error deleting the comment"));
     }
 
     return (
