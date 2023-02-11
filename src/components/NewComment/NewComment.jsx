@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import newCom from '../NewComment/newComStyle.module.css';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import { getAllComments, postNewComment } from '../../services/httpReqfunctions';
 
 const NewComment = ({onPost}) => {
 
@@ -12,8 +12,8 @@ const NewComment = ({onPost}) => {
         // setComment({
         //     [e.target.name]: e.target.value,
         // });
-        axios.post("http://localhost:3005/comments", {...comment, postId: Math.floor(Math.random() * 30)})
-            .then(response => axios.get("http://localhost:3005/comments"))
+        postNewComment({...comment, postId: Math.floor(Math.random() * 30)})
+            .then(response => getAllComments())
             .then(({data}) => onPost(data))
             .catch(error => toast.error("An error occurred while adding a comment: \n" + error.message));
     }

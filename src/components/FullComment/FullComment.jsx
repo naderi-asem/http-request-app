@@ -1,24 +1,23 @@
-import axios from 'axios';
+import http from '../../services/httpService';
 import { useEffect, useState } from 'react';
 import fComStyle from '../FullComment/fComStyle.module.css';
 import { toast } from 'react-toastify';
+import { getAllComments, deleteComment } from '../../services/httpReqfunctions';
 
 const FullComment = ({ commentId, onDelete }) => {
 
-    const [comment, setComment] = useState({name: "", email: "", body: ""});
+    const [comment, setComment] = useState({ name: "", email: "", body: "" });
     console.log("user id in full comment", commentId);
 
     useEffect(() => {
-        axios.get(`http://localhost:3005/comments/${commentId}`)
-            .then(({ data }) => setComment(data))
+        getAllComments(commentId).then(({ data }) => setComment(data))
             .catch(error => console.log(error.message9));
     }, [commentId]);
 
     const deleteHandler = (id) => {
-        axios.delete(`http://localhost:3005/comments/${id}`)
-            .then(response => axios.get('http://localhost:3005/comments'))
-            .then(({data}) => onDelete(data, id))
-            .catch(error => toast.error("There was an error deleting the comment"));
+        deleteComment(id).then(response => http.get('/comments'))
+            .then(({ data }) => onDelete(data, id))
+            .catch(error => toast.error("There was an error deleting the comment" + error.message));
     }
 
     return (

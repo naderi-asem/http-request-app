@@ -4,8 +4,8 @@ import Comments from "../../components/Comment/Comment";
 import FullComment from "../../components/FullComment/FullComment";
 import NewComment from "../../components/NewComment/NewComment";
 import disStyle from '../Discussion/disStyle.module.css';
-import axios from "axios";
 import { toast } from 'react-toastify';
+import { getAllComments } from "../../services/httpReqfunctions";
 
 const Discussion = () => {
 
@@ -15,9 +15,7 @@ const Discussion = () => {
 
     //get all comments when the component is mounted
     useEffect(() => {
-        axios
-            .get("http://localhost:3005/comments")
-            .then(({ data }) => {
+            getAllComments().then(({ data }) => {
                 setDbData(data);
                 data.length ? setID(data[0].id) : setID(0);
             })
