@@ -1,26 +1,27 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import Comments from "../../components/Comment/Comment";
-import FullComment from "../../components/FullComment/FullComment";
-import NewComment from "../../components/NewComment/NewComment";
 import disStyle from '../Discussion/disStyle.module.css';
 import { toast } from 'react-toastify';
 import { getAllComments } from "../../services/httpReqfunctions";
+import { Route, Switch } from "react-router-dom";
+import NewCommentPage from "../../pages/NewCommentPage";
+import CommentsPage from "../../pages/CommentsPage";
+import NotFoundPage from "../../pages/NotFoundPage";
 
 const Discussion = () => {
 
     const [dbData, setDbData] = useState([]);
-    const [error, setError] = useState({message: "", isError: false });
+    const [error, setError] = useState({ message: "", isError: false });
     const [id, setID] = useState(1);
 
     //get all comments when the component is mounted
     useEffect(() => {
-            getAllComments().then(({ data }) => {
-                setDbData(data);
-                data.length ? setID(data[0].id) : setID(0);
-            })
+        getAllComments().then(({ data }) => {
+            setDbData(data);
+            data.length ? setID(data[0].id) : setID(0);
+        })
             .catch(err => {
-                setError({message: err.message, isError: true});
+                setError({ message: err.message, isError: true });
             });
     }, []);
 
@@ -51,23 +52,26 @@ const Discussion = () => {
 
     return (
         <section className={disStyle.container}>
-            <div>
-                <section className={disStyle.comments}>
-                    <h2>comments</h2>
-                    <section className={disStyle.cmtBox} >
-                        {dbData.map(comment => <Comments
-                            key={comment.id}
-                            comment={comment}
-                            onSelected={selectComment}
-                        />
-                        )}
-                    </section>
-                </section>
-                <FullComment commentId={id} onDelete={deleteCommentHandler} />
-            </div>
-            <div>
-                <NewComment onPost={postCommentHandler} />
-            </div>
+            <Switch>
+                <Route path="/new-comment" component={(params) => <NewCommentPage
+                    params={params}
+                    onPost={postCommentHandler} />}
+
+                />
+                <Route
+                    path="/"
+                    component={(params) => <CommentsPage
+                        disStyle={disStyle}
+                        onSelect={selectComment}
+                        onDelete={deleteCommentHandler}
+                        dbData={dbData}
+                        id={id}
+                        params={params}
+                    />}
+                    exact={true}
+                />
+                <Route path="*" component={NotFoundPage} />
+            </Switch>
         </section>
     );
 }

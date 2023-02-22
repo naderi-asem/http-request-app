@@ -1,6 +1,8 @@
+import Discussion from "../containers/Discussion/Discussion";
+
 const HomePage = () => {
     return ( 
-        <section></section>
+        <Discussion/>
      );
 }
  

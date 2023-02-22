@@ -1,0 +1,5 @@
+.not_found {
+    color: var(--text-color-1);
+    text-align: center;
+    padding: 25px;
+}
